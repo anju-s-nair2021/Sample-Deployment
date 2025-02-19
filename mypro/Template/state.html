@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="{% url 'state' %}">
+        {% csrf_token %}
+    <table align="center" border="1">
+        <tr>
+            <th>State Name</th><td><input type="text" name="sname"></td>
+        </tr>
+        <tr>
+            <th></th><td><input type="submit"></td>
+        </tr>
+
+    </table>
+</form>
+<table border="1">
+    <tr>
+        <th>id</th><th>State Name</th>
+    </tr>
+    {% for i in s %}
+    <tr>
+        <td>{{i.id}}</td><td>{{i.sname}}</td>
+    </tr>
+    {% endfor %}
+    
+    <!-- <tr>
+        <td>{{s.id}}</td><td>{{s.sname}}</td>
+        </tr> -->
+</table>
+</body>
+</html>

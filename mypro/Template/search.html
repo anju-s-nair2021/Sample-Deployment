@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'external.css' %}">
+
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center" style="color: cadetblue;">View Users</h1>
+        <div style="background-color: blueviolet;height: 70%; width:50%;margin: auto;margin-bottom: 150px;">
+            <form method="post" action="{% url 'search' %}">
+                {% csrf_token %}
+            
+            <select name="id">
+                <option value="0">--select--</option>
+                {% for i in u %}
+                <option value="{{i.id}}">{{i.name}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="search">
+        <table align="center" border="1"  style="border: brown;padding: 40px; color:white ">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Image</th>
+                
+            </tr>
+            
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.gender}}</td>
+                <td><img src="/media/{{i.image}}" height="100px" width="100px"></td>
+                
+            </tr>
+            
+        </table>
+    </form>
+        </div>
+</body>
+</html>
